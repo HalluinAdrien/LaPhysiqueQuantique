@@ -1,0 +1,117 @@
+/* ==========================================
+   1. STYLES COMMUNS (S'appliquent aux deux pages)
+   ========================================== */
+   body {
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: "Arial", sans-serif;
+    padding: 40px;
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    text-align: center; /* Centre le texte proprement en CSS */
+    margin-bottom: 30px;
+}
+
+p, a {
+    font-family: "Arial", sans-serif;
+}
+
+
+/* ==========================================
+   2. GESTION DES IMAGES DE FOND (Via les ID)
+   ========================================== */
+
+/* Fond pour la page d'accueil */
+#index {
+    background-image: url("quantum.webp");
+}
+
+
+/* Fond pour la page du quiz */
+#quiz {
+    background-image: url("neon-waves-glow.png"); /* CORRIGÉ : Le point-virgule est bien à l'extérieur */
+}
+#modelstandart {
+    background-image: url("Abstract-Dark-Matter-Mystery-Astrophysics.jpg");
+
+}
+
+
+/* ==========================================
+   3. ÉLÉMENTS SPÉCIFIQUES (Surlignage & Bouton)
+   ========================================== */
+
+/* Style du texte surligné (<mark>) */
+mark {
+    background-color: #db8234; /* Ta couleur orange/corail */
+    color: white;
+    border-radius: 10px;       /* Angles arrondis */
+    padding: 2px 8px;          /* Donne de l'air au texte */
+}
+
+/* Transformation du lien en un bouton moderne */
+.bouton-lien {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #db9b34;  /* Bleu électrique */
+    color: white;
+    text-decoration: none;      /* Enlève le soulignement des liens */
+    border-radius: 5px;         /* Angles arrondis pour le bouton */
+    font-weight: bold;
+    transition: background-color 0.2s ease; /* Effet fluide au survol */
+}
+
+/* Effet visuel quand la souris passe sur le bouton */
+.bouton-lien:hover {
+    background-color: #2980b9;  /* Bleu un peu plus sombre */
+}
+
+
+/* Style de base de la boîte de texte (fermée) */
+details .details-content {
+    max-height: 0;        /* Hauteur à zéro pour la cacher */
+    overflow: hidden;     /* Empêche le texte de dépasser pendant l'animation */
+    opacity: 0;           /* Totalement invisible au départ */
+    transition: max-height 1s ease-out, opacity 1s ease; /* Vitesse de l'effet */
+}
+
+/* Style automatique quand l'utilisateur clique et ouvre la balise [open] */
+details[open] .details-content {
+    max-height: 200px;    /* Ajuste cette valeur si ton texte est très long */
+    opacity: 1;           /* Devient complètement visible */
+    padding-top: 10px;
+    transition: max-height 1s ease-in, opacity 1s ease; /* Vitesse de l'effet */    /* Petit espace optionnel entre le titre et le texte */
+}
+
+/* Optionnel : Un petit effet de style sur le titre cliquable */
+summary {
+    cursor: pointer;      /* Transforme le curseur en main au survol */
+    font-weight: bold;
+    outline: none;
+}
+
+.box-shadow{
+    background-color: rgba(4, 4, 4, 0.6);
+    border-radius: 26px;
+    padding: 10px;
+    margin: 41px;
+    box-shadow: -4px 4px 10px 1px;
+}
+/* État 0 : Le chat est vivant (Vert) */
+#schrodiCat[data-value="0"] {
+    color: #2ecc71;
+}
+
+/* État 1 : Le chat est mort (Rouge) */
+#schrodiCat[data-value="1"] {
+    color: #e74c3c;
+}
+
+.ml-2 {
+    margin-left: 41px;;
+}
