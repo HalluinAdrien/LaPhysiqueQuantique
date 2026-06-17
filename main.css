@@ -7,7 +7,10 @@
     background-size: cover;
     color: white;
     font-family: "Arial", sans-serif;
-    padding: 40px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
 }
 
 h1 {
@@ -35,9 +38,17 @@ p, a {
 #quiz {
     background-image: url("neon-waves-glow.png"); /* CORRIGÉ : Le point-virgule est bien à l'extérieur */
 }
+
 #modelstandart {
     background-image: url("Abstract-Dark-Matter-Mystery-Astrophysics.jpg");
-
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+}
+#lagravitationquantique {
+    background-image: url("Quantum-gravity.jpg");
 }
 
 
@@ -97,21 +108,67 @@ summary {
 
 .box-shadow{
     background-color: rgba(4, 4, 4, 0.6);
-    border-radius: 26px;
+    border-radius: 15px;
     padding: 10px;
     margin: 41px;
     box-shadow: -4px 4px 10px 1px;
 }
+
+#schrodiCat{
+    cursor:pointer;
+}
+
+#schrodiCat {
+    color: gray; /* Couleur grise pour le mystère */
+    font-style: italic;
+}
+
 /* État 0 : Le chat est vivant (Vert) */
 #schrodiCat[data-value="0"] {
     color: #2ecc71;
+    font-style: normal;
 }
 
 /* État 1 : Le chat est mort (Rouge) */
 #schrodiCat[data-value="1"] {
     color: #e74c3c;
+    font-style: normal;
 }
 
 .ml-2 {
     margin-left: 41px;;
 }
+
+  
+.BackGroundWhite{
+
+    .image-centree 
+        display: block;       /* 1. Transforme l'image en bloc (prend toute la largeur disponible) */
+        margin-left: auto;    /* 2. Calcule automatiquement la marge à gauche */
+        margin-right: auto;   /* 3. Calcule automatiquement la marge à droite */
+        background-color: rgb(255, 255, 255);
+        width:500px;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center; /* Centre horizontalement */
+        align-items: center;     /* Optionnel : Centre aussi verticalement si la boîte a une hauteur */
+}
+
+.boutonlienyoutube{
+    display: flex;
+    align-items: center;
+    width:200px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgb(0, 0, 0);  /* Bleu électrique */
+    color: white;
+    text-decoration: none;      /* Enlève le soulignement des liens */
+    border-radius: 20px;         /* Angles arrondis pour le bouton */
+    font-weight: bold;
+    transition: background-color 0.2s ease; /* Effet fluide au survol */
+}
+.boutonlienyoutube > img{
+    height:30px;
+    margin-right: 5px;
+} 
+
