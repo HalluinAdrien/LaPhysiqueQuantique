@@ -1,7 +1,7 @@
 
 let catStateAlive = "L'état est maintenant fixé : le chat est vivant ! 🐈";
 let catStateDead = "L'état est maintenant fixé : le chat est mort ! 💀";
-let catStateLess = "L'état du chat est mort est vivant(superposition) aucune intéraction n'est fait 💀|🐈";
+let catStateLess = "L'état du chat est mort et vivant(superposition) aucune intéraction n'est fait 💀|🐈";
 
 function q1(questionNb, idSelect){
     alert('reponse à la question '+questionNb+' -> '+document.getElementById(idSelect).value);

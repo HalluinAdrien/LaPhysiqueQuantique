@@ -17,6 +17,9 @@ h1 {
     color: rgb(255, 255, 255);
     text-align: center; /* Centre le texte proprement en CSS */
     margin-bottom: 30px;
+    margin-top: 0;
+    padding-top: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 p, a {
@@ -31,12 +34,28 @@ p, a {
 /* Fond pour la page d'accueil */
 #index {
     background-image: url("quantum.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* 🚀 LA COMMANDE MAGIQUE ICI : */
+    background-attachment: fixed; /* Le fond reste bloqué, mais le texte peut défiler ! */
+    
+    /* On supprime position: fixed, width, height, et z-index qui bloquaient le body */
 }
 
 
 /* Fond pour la page du quiz */
 #quiz {
-    background-image: url("neon-waves-glow.png"); /* CORRIGÉ : Le point-virgule est bien à l'extérieur */
+    background-image: url("neon-waves-glow.png"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* 🚀 LA COMMANDE MAGIQUE ICI : */
+    background-attachment: fixed; /* Le fond reste bloqué, mais le texte peut défiler ! */
+    
+    /* On supprime position: fixed, width, height, et z-index qui bloquaient le body */
 }
 
 #modelstandart {
@@ -49,9 +68,15 @@ p, a {
 }
 #lagravitationquantique {
     background-image: url("Quantum-gravity.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* 🚀 LA COMMANDE MAGIQUE ICI : */
+    background-attachment: fixed; /* Le fond reste bloqué, mais le texte peut défiler ! */
+    
+    /* On supprime position: fixed, width, height, et z-index qui bloquaient le body */
 }
-
-
 /* ==========================================
    3. ÉLÉMENTS SPÉCIFIQUES (Surlignage & Bouton)
    ========================================== */
@@ -171,4 +196,35 @@ summary {
     height:30px;
     margin-right: 5px;
 } 
+.qrcode{
+    background-image: url("Capture d’écran 2026-06-18 à 10.50.38.png");
+     width: 150px; /* Force l'image à faire 200 pixels de large */
+     display: block;       /* Force l'image à se comporter comme un bloc */
+    margin-left: auto;    /* Centre à gauche */
+    margin-right: auto;   /* Centre à droite */
+    
+    margin-top: 40px;
+    
+}
+.reset{
+    background-image: url("repeat-sign-reload-icon-refresh-260nw-2130838613.webp");
+}
+/* --- STYLE NORMAL (PC portable et fixe) --- */
+.body {
+    font-size: 18px;
+}
 
+/* --- STYLE POUR SMARTPHONES (Écrans de moins de 768px de large) --- */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px; /* On baisse un peu la taille du texte sur téléphone */
+    }
+    
+    h1 {
+        font-size: 1.8rem; /* On rétrécit le gros titre pour qu'il tienne sur une ligne */
+    }
+    
+    .qr-code {
+        width: 60%; /* Le QR code prendra un peu plus de place sur un petit écran */
+    }
+}
