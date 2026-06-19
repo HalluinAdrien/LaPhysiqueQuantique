@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labo Quantique - Relativité Restreinte</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #060a13;
+            color: #f1f5f9;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        .background-fixed {
+            background: radial-gradient(circle at center, #1e1b4b 0%, #020617 100%);
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        h1 {
+            color: #38bdf8;
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .encyclopedia-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 22px;
+            border-radius: 16px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .badge {
+            background: #38bdf8;
+            color: #060a13;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .encyclopedia-panel p {
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin: 0 0 12px 0;
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.3);
+            padding: 8px;
+            border-radius: 6px;
+            color: #f43f5e;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #game-container {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 35px rgba(0, 0, 0, 0.7);
+            border: 1px solid #38bdf833;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .hud {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hud-item {
+            background: rgba(0,0,0,0.4);
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        canvas {
+            background-color: #020617;
+            border-radius: 8px;
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        #mobile-controls {
+            display: none;
+            margin-top: 15px;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        #mobile-controls button {
+            width: 75px;
+            height: 75px;
+            font-size: 2rem;
+            background-color: #1e293b;
+            color: #38bdf8;
+            border: 2px solid #38bdf8;
+            border-radius: 50%;
+            user-select: none;
+            touch-action: manipulation;
+        }
+
+        .info-panel {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #38bdf8;
+            margin-top: 15px;
+        }
+
+        #resetBtn {
+            background-color: #f43f5e;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* 📱 MODE RESPONSIVE MOBILE */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+                justify-content: center;
+            }
+            h1, .encyclopedia-panel {
+                display: none !important;
+            }
+            #game-container {
+                border: none;
+                background: transparent;
+                padding: 5px;
+            }
+            #mobile-controls {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-fixed"></div>
+
+    <div class="main-wrapper">
+        <h1>Simulateur d'Horizon Relativiste</h1>
+
+        <div class="encyclopedia-panel">
+            <span class="badge">Relativité Restreinte (1905)</span>
+            <p>Formulée par Albert Einstein, cette théorie stipule que les lois de la physique sont les mêmes pour tous les observateurs en mouvement rectiligne uniforme, et que la vitesse de la lumière dans le vide ($c$) est absolue et indépassable.</p>
+            <p>Lorsque la vitesse V d'un objet s'approche de C(la vitesse de la lumière), l'espace et le temps se déforment selon le facteur de Lorentz :</p>
+            <div class="formula">γ = 1 / √(1 - v²/c²)</div>
+        </div>
+
+        <div id="game-container">
+            <div class="hud">
+                <div class="hud-item">Vitesse : <span id="txt-speed" style="color: #38bdf8;">10.0% c</span></div>
+                <div class="hud-item">Facteur γ : <span id="txt-gamma" style="color: #f43f5e;">1.00</span></div>
+                <div class="hud-item">Terre : <span id="txt-earth-time" style="color: #eab308;">0s</span> | Vaisseau : <span id="txt-ship-time" style="color: #10b981;">0s</span></div>
+                <div class="hud-item">Intégrité : <span id="txt-integrity" style="color: #22c55e;">100%</span></div>
+                <button id="resetBtn" onclick="resetGame()">Recommencer</button>
+            </div>
+
+            <canvas id="spaceCanvas" width="800" height="400"></canvas>
+            
+            <div id="mobile-controls">
+                <button id="btn-up">↑</button>
+                <button id="btn-down">↓</button>
+            </div>
+
+            <div class="info-panel">
+                <div id="infoTitle" style="font-weight:bold; color:#38bdf8; margin-bottom: 4px;">Objectif : Atteindre 99.9% de c</div>
+                <div id="infoText">Esquive les distorsions d'antimatière (rouges) et absorbe les Noyaux de Tachyons (bleus/cyan) pour accélérer !</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="relativite_restreinte.js"></script>
+</body>
+</html>

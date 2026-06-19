@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labo Quantique - Tri du Modèle Standard</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #0d0e15;
+            color: #c5c6c7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        h1 {
+            color: #00ffaa;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
+        }
+        p {
+            margin-top: 0;
+            color: #a2ffd0;
+            font-style: italic;
+        }
+        #game-container {
+            position: relative;
+            background: #151a22;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+            border: 1px solid #223344;
+        }
+        canvas {
+            background-color: #05070b;
+            border-radius: 8px;
+            display: block;
+            box-shadow: inset 0 0 40px rgba(0, 255, 170, 0.05);
+        }
+        .hud {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .info-panel {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #00ffaa;
+            margin-top: 15px;
+            max-width: 780px;
+            font-size: 0.95rem;
+        }
+        .info-title {
+            font-weight: bold;
+            color: #00ffaa;
+            margin-bottom: 4px;
+        }
+        .key {
+            background: #2a2f3a;
+            padding: 3px 6px;
+            border-radius: 4px;
+            color: #fff;
+            border: 1px solid #444;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Le Séparateur du Modèle Standard</h1>
+    <p>Dirigez les particules élémentaires vers leur famille fondamentale !</p>
+
+    <div id="game-container">
+        <div class="hud">
+            <div>Score : <span id="score" style="color: #00ffaa;">0</span></div>
+            <div>Vies : <span id="lives" style="color: #ff3366;">♥♥♥</span></div>
+        </div>
+
+        <canvas id="standardModelCanvas" width="800" height="500"></canvas>
+        
+        <div class="info-panel">
+            <div class="info-title" id="infoTitle">Analyseur de données : En attente...</div>
+            <div id="infoText">Utilisez les touches <span class="key">←</span> et <span class="key">→</span> pour guider la particule en cours de chute dans la bonne colonne en bas.</div>
+        </div>
+    </div>
+    <div>
+        <center><a href="model standart.html" class="bouton-lien">Revenir en arrière</a></center
+    </div>
+
+    <script src="model-standart-mini-jeu.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labo Quantique - Intrication (Mode Accessible)</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        h1 {
+            color: #c586ff;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(197, 134, 255, 0.4);
+        }
+        p {
+            margin-top: 0;
+            color: #dfc4ff;
+            font-style: italic;
+        }
+        #game-container {
+            position: relative;
+            background: #1f2833;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+            border: 1px solid #444;
+        }
+        canvas {
+            background-color: #0d1117;
+            border-radius: 8px;
+            display: block;
+            box-shadow: inset 0 0 30px rgba(197, 134, 255, 0.1);
+        }
+        .hud {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .instructions {
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #aaa;
+            max-width: 800px;
+        }
+        .key {
+            background: #333;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #fff;
+            border: 1px solid #555;
+            font-family: monospace;
+            font-weight: bold;
+        }
+        .status-obs {
+            color: #ff3366;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .status-obs.active {
+            color: #33ffcc;
+            text-shadow: 0 0 8px #33ffcc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Puzzle Quantique : Intrication & Superposition</h1>
+    <p>Version optimisée : contrôles plus souples et zones d'objectifs élargies.</p>
+
+    <div id="game-container">
+        <div class="hud">
+            <div>Niveau : <span style="color: #c586ff;">1 (Stable)</span></div>
+            <div>État Quantique : <span id="obsStatus" class="status-obs">Ondes Superposées (Non Observé)</span></div>
+        </div>
+
+        <canvas id="puzzleCanvas" width="800" height="400"></canvas>
+        
+        <div class="instructions">
+            <strong>Commandes :</strong><br>
+            • Utilisez <span class="key">←</span> et <span class="key">→</span> pour vous déplacer (mouvements intriqués miroirs).<br>
+            • Appuyez sur <span class="key">↑</span> pour sauter (hauteur augmentée pour plus de confort).<br>
+            • Maintenez <span class="key">Maj / Shift</span> pour **Observer** et rendre les plateformes violettes solides !
+        </div>
+    </div>
+    <div>
+        <center><a href="conclusion.html" class="bouton-lien">Retour en arrière</a></center
+    </div>
+    <script src="intrication.js"></script>
+</body>
+</html>

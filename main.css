@@ -7,10 +7,20 @@
     background-size: cover;
     color: white;
     font-family: "Arial", sans-serif;
-    padding: 0;
+    padding: 30px 20px;
     margin: 0;
     width: 100%;
     height: 100%;
+}
+
+.lien-bouton{
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.lien-bouton > a {
+margin: 5px;
 }
 
 h1 {
@@ -48,6 +58,7 @@ p, a {
 /* Fond pour la page du quiz */
 #quiz {
     background-image: url("neon-waves-glow.png"); 
+    background-position: center;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -60,6 +71,7 @@ p, a {
 
 #modelstandart {
     background-image: url("Abstract-Dark-Matter-Mystery-Astrophysics.jpg");
+    background-position: center;
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -68,6 +80,7 @@ p, a {
 }
 #lagravitationquantique {
     background-image: url("Quantum-gravity.jpg");
+    background-position: center;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -166,8 +179,6 @@ summary {
 
   
 .BackGroundWhite{
-
-    .image-centree 
         display: block;       /* 1. Transforme l'image en bloc (prend toute la largeur disponible) */
         margin-left: auto;    /* 2. Calcule automatiquement la marge à gauche */
         margin-right: auto;   /* 3. Calcule automatiquement la marge à droite */
@@ -227,4 +238,77 @@ summary {
     .qr-code {
         width: 60%; /* Le QR code prendra un peu plus de place sur un petit écran */
     }
+    .BackGroundWhite{
+        max-width:300px;
+    }
+
+    #modelstandart {
+        background-image: url("quantum.webp");
+        background-position: center;
+    }
+
+    
+}
+#resetBtn {
+    background-color: #ff3366;
+    color: #fff;
+    border: 1px solid #ff5588;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 51, 102, 0.4);
+    transition: all 0.2s ease;
+    display: none; /* Caché au début */
+}
+#resetBtn:hover {
+    background-color: #ff5588;
+    box-shadow: 0 0 15px rgba(255, 51, 102, 0.8);
+    transform: scale(1.05);
+}
+/* Rend le Canvas fluide sur tous les écrans */
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Cache les contrôles mobiles par défaut sur PC */
+#mobile-controls {
+    display: none;
+    margin-top: 15px;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.row {
+    display: flex;
+    gap: 5px;
+}
+
+#mobile-controls button {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #222547;
+    color: white;
+    border: 2px solid #ff007f; /* Ajuste la couleur selon le jeu */
+    border-radius: 10px;
+    user-select: none; /* Évite de sélectionner le texte en restant appuyé */
+}
+
+/* Active les boutons uniquement sur les écrans de tablettes/smartphones */
+@media (max-width: 768px) {
+    #mobile-controls {
+        display: flex;
+    }
+}
+.logo-psi {
+    font-size: 2.2rem; /* Plus grand que le reste du texte */
+    font-weight: bold;
+    color: #38bdf8; /* Couleur cyan */
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.8), 0 0 30px rgba(56, 189, 248, 0.4); /* Double lueur néon */
+    margin-right: 5px;
 }

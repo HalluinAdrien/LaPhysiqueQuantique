@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labo Quantique - Théorie des Cordes & M</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #060713;
+            color: #e2e8f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #ff007f;
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        p {
+            margin-top: 0;
+            color: #ff99cc;
+            font-style: italic;
+            text-align: center;
+        }
+        #game-container {
+            background: #111329;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 35px rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff007f44;
+            width: 100%;
+            max-width: 840px;
+            box-sizing: border-box;
+        }
+        canvas {
+            background-color: #020308;
+            border-radius: 8px;
+            display: block;
+            box-shadow: inset 0 0 30px rgba(255, 0, 127, 0.1);
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+        .hud {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        #resetBtn {
+            background-color: #ff007f;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            display: none;
+        }
+        .info-panel {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #ff007f;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+        .info-title {
+            font-weight: bold;
+            color: #ff007f;
+            margin-bottom: 4px;
+        }
+        .key {
+            background: #222547;
+            padding: 3px 6px;
+            border-radius: 4px;
+            border: 1px solid #444;
+            font-family: monospace;
+        }
+
+        /* --- STYLES COMMANDES MOBILES TACTILES --- */
+        #mobile-controls {
+            display: none; /* Caché sur PC */
+            margin-top: 20px;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .row {
+            display: flex;
+            gap: 8px;
+        }
+        #mobile-controls button {
+            width: 65px;
+            height: 65px;
+            font-size: 1.6rem;
+            font-weight: bold;
+            background-color: #1e2038;
+            color: white;
+            border: 2px solid #ff007f;
+            border-radius: 12px;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            transition: transform 0.1s;
+        }
+        #mobile-controls button:active {
+            transform: scale(0.92);
+            background-color: #ff007f;
+        }
+
+        /* Affichage des boutons uniquement sur les écrans tactiles/mobiles */
+        @media (max-width: 768px) {
+            #mobile-controls {
+                display: flex;
+            }
+            .hud {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Le Résonateur Cosmique</h1>
+    <p>Accordez la corde vibrante pour matérialiser les composants de la Théorie M !</p>
+
+    <div id="game-container">
+        <div class="hud">
+            <div>Score : <span id="score" style="color: #ff007f;">0</span></div>
+            <button id="resetBtn" onclick="resetGame()">Réinitialiser</button>
+            <div>Stabilité : <span id="stability" style="color: #00ffcc;">100%</span></div>
+        </div>
+
+        <canvas id="stringCanvas" width="800" height="400"></canvas>
+        
+        <div id="mobile-controls">
+            <div class="row"><button id="btn-up">↑</button></div>
+            <div class="row">
+                <button id="btn-left">←</button>
+                <button id="btn-down">↓</button>
+                <button id="btn-right">→</button>
+            </div>
+        </div>
+        
+        <div class="info-panel">
+            <div class="info-title" id="infoTitle">État de la Corde : Fondamental</div>
+            <div id="infoText">Ajustez la fréquence avec ↑ / ↓ et changez de dimension avec ← / → pour intercepter les ondes entrantes.</div>
+        </div>
+    </div>
+    <div>
+    <center><a href="conclusion.html" class="bouton-lien">Revenir en arrière </a></center>
+    </div>
+    <script src="theorie_des_cordes.js"></script>
+</body>
+</html>

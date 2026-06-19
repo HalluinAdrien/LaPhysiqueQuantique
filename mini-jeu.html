@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labo Quantique - L'Effet Tunnel</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        h1 {
+            color: #66fcf1;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(102, 252, 241, 0.3);
+        }
+        p {
+            margin-top: 0;
+            color: #45f3ff;
+            font-style: italic;
+        }
+        #game-container {
+            position: relative;
+            background: #1f2833;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+        }
+        canvas {
+            background-color: #000;
+            border-radius: 8px;
+            display: block;
+            box-shadow: inset 0 0 20px rgba(0,255,200,0.1);
+        }
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: #0b0c10;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .slider-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        label {
+            font-weight: bold;
+            color: #66fcf1;
+            min-width: 220px;
+        }
+        input[type="range"] {
+            flex-grow: 1;
+            accent-color: #66fcf1;
+            cursor: pointer;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .btn-action {
+            background-color: #45f3ff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-action:hover {
+            background-color: #66fcf1;
+            box-shadow: 0 0 10px #66fcf1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Expérience Alpha : L'Effet Tunnel</h1>
+    <p>Ajustez l'énergie de l'électron pour franchir l'obstacle énergétique.</p>
+
+    <div id="game-container">
+        <canvas id="tunnelCanvas" width="800" height="350"></canvas>
+        
+        <div class="controls">
+            <div class="slider-group">
+                <label id="energyLabel">Énergie de la particule (E) : 50 eV</label>
+                <input type="range" id="energySlider" min="10" max="130" value="50">
+            </div>
+            
+            <div class="slider-group">
+                <button class="btn-action" id="fireBtn">Envoyer la particule</button>
+                <div style="color: #fff;">
+                    Chances de franchissement quantique : <span id="probDisplay" style="color:#ff007f; font-weight:bold;">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div>Tentatives : <span id="attemptsSc">0</span></div>
+            <div>Tunnels Réussis : <span id="tunnelSc" style="color: #00ffcc;">0</span></div>
+            <div>Bonds Classiques : <span id="bounceSc" style="color: #ff3333;">0</span></div>
+        </div>
+    </div>
+    <div>
+    <center><a href="conclusion.html" class="bouton-lien">Conclusion</a></center
+    </div>
+    <script src="mini-jeu.js"></script>
+</body>
+</html>

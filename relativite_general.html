@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ψ Labo Quantique - Relativité Générale</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #04060c;
+            color: #f1f5f9;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        .background-fixed {
+            background: radial-gradient(circle at center, #0f1123 0%, #020408 100%);
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* 👑 TON LOGO PROFESSIONNEL */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            user-select: none;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .logo-psi {
+            font-size: 2.4rem;
+            font-weight: bold;
+            color: #38bdf8;
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.8), 0 0 30px rgba(56, 189, 248, 0.4);
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .logo-text .highlight {
+            color: #00ffaa;
+            text-shadow: 0 0 10px rgba(0, 255, 170, 0.6);
+        }
+
+        h1 {
+            color: #ba68c8;
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px rgba(186, 104, 200, 0.3);
+            font-size: 1.6rem;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .encyclopedia-panel {
+            background: rgba(10, 15, 30, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(186, 104, 200, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .badge {
+            background: #ba68c8;
+            color: #ffffff;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .encyclopedia-panel p {
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin: 0 0 12px 0;
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.4);
+            padding: 8px;
+            border-radius: 6px;
+            color: #38bdf8;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #game-container {
+            background: #0b0e17;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 35px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(186, 104, 200, 0.15);
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .hud {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hud-item {
+            background: rgba(0,0,0,0.5);
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        canvas {
+            background-color: #020306;
+            border-radius: 8px;
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.9);
+        }
+
+        #mobile-controls {
+            display: none;
+            margin-top: 15px;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        #mobile-controls button {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            background-color: #151a2d;
+            color: #ba68c8;
+            border: 2px solid #ba68c8;
+            border-radius: 50%;
+            user-select: none;
+            touch-action: manipulation;
+        }
+
+        .info-panel {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #ba68c8;
+            margin-top: 15px;
+        }
+
+        #resetBtn {
+            background-color: #ba68c8;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* 📱 RESPONSIVE MOBILE */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+                justify-content: center;
+            }
+            .logo-container {
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+            h1, .encyclopedia-panel {
+                display: none !important;
+            }
+            #game-container {
+                border: none;
+                background: transparent;
+                padding: 5px;
+            }
+            #mobile-controls {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-fixed"></div>
+
+    <div class="logo-container">
+        <span class="logo-psi">&Psi;</span>
+        <span class="logo-text">LABO<span class="highlight">QUANTIQUE</span></span>
+    </div>
+
+    <div class="main-wrapper">
+        <h1>Explorateur de Singularités Gravitationnelles</h1>
+
+        <div class="encyclopedia-panel">
+            <span class="badge">Relativité Générale (1915)</span>
+            <p>Albert Einstein démontre que la gravité n'est pas une force d'attraction mystérieuse, mais une **courbure de la géométrie de l'espace-temps** provoquée par la présence de masse et d'énergie.</p>
+            <p>À proximité d'une masse extrême (comme un trou noir), le temps subit une dilatation gravitationnelle par rapport à un observateur lointain :</p>
+            <div class="formula">t' = t × √(1 - Rs / r)</div>
+        </div>
+
+        <div id="game-container">
+            <div class="hud">
+                <div class="hud-item">Données récoltées : <span id="txt-score" style="color: #00ffaa;">0 / 10</span></div>
+                <div class="hud-item">Gravité : <span id="txt-gravity" style="color: #ba68c8;">1.0g</span></div>
+                <div class="hud-item">Terre : <span id="txt-earth" style="color: #eab308;">0s</span> | Vaisseau : <span id="txt-ship" style="color: #38bdf8;">0s</span></div>
+                <button id="resetBtn" onclick="resetGame()">Redémarrer la sonde</button>
+            </div>
+
+            <canvas id="gravityCanvas" width="800" height="450"></canvas>
+            
+            <div id="mobile-controls">
+                <button id="btn-left">←</button>
+                <button id="btn-up">↑</button>
+                <button id="btn-down">↓</button>
+                <button id="btn-right">→</button>
+            </div>
+
+            <div class="info-panel">
+                <div style="font-weight:bold; color:#ba68c8; margin-bottom: 4px;">Mission : Récupérer 10 capsules de données</div>
+                <div>Utilise tes propulseurs (Z,Q,S,D ou Flèches) pour contrer la courbure de l'espace-temps. Ne franchis pas la ligne rouge (Horizon des événements) !</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="relativite_generale.js"></script>
+</body>
+</html>

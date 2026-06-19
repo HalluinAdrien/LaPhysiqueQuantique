@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labo Quantique - Le Chasseur de Photons</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        h1 {
+            color: #ff9900;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255, 153, 0, 0.3);
+        }
+        p {
+            margin-top: 0;
+            color: #f8e9a1;
+            font-style: italic;
+        }
+        #game-container {
+            position: relative;
+            background: #1f2833;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+        }
+        canvas {
+            background-color: #000;
+            border-radius: 8px;
+            display: block;
+            box-shadow: inset 0 0 30px rgba(255, 153, 0, 0.1);
+        }
+        .hud {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .target-box {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid #ff9900;
+            text-align: center;
+        }
+        #targetEnergy {
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 0 0 5px #fff;
+        }
+        .instructions {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        .key {
+            background: #333;
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: #fff;
+            border: 1px solid #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Le Chasseur de Photons</h1>
+    <p>Absorbez l'énergie exacte pour provoquer un saut quantique !</p>
+
+    <div id="game-container">
+        <div class="hud">
+            <div>Score : <span id="scoreDisplay" style="color: #66fcf1;">0</span></div>
+            <div>Niveau (n) : <span id="orbitDisplay" style="color: #00ffcc;">1</span></div>
+        </div>
+        
+        <div class="target-box">
+            Énergie requise pour le prochain saut : <br>
+            <span id="targetEnergy">10 eV</span>
+        </div>
+
+        <canvas id="photonCanvas" width="600" height="600"></canvas>
+        
+        <div class="instructions">
+            Utilisez les flèches <span class="key">←</span> et <span class="key">→</span> pour faire tourner l'électron sur son orbite.<br>
+            Évitez les photons qui n'ont pas la bonne énergie !
+        </div>
+    </div>
+    <div>
+    <center><a href="conclusion.html" class="bouton-lien">Retour en arrière</a></center
+    </div>
+    <script src="chasseur-de-photon.js"></script>
+</body>
+</html>
